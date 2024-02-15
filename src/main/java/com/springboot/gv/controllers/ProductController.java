@@ -41,11 +41,11 @@ public class ProductController {
 		 
 		 return ResponseEntity.ok(products);
 	}
-	
+	@GetMapping("/productlistltp")
 	public List<Product> getByLesserPrice(double price){
 		return ps.getByPriceLessThan(price);
 	}
-	
+	@GetMapping("/productlistgtp")
 	public List<Product> getByGreaterPrice(double price){
 		return ps.getByPriceGreaterThan(price);
 	}
@@ -53,9 +53,9 @@ public class ProductController {
 	@PostMapping("addProduct/{cid}")
 	public Product addProd(@PathVariable("cid") int cid, @RequestBody InsertProduct ip) {
 		Category cat = cs.getByCategoryId(cid);
-		
+		System.out.println(cat);
 		Product prod = new Product(ip.getProductName(), ip.getProductDescription(), ip.getProductPrice(), cat);
 		
-		return prod;
+		return ps.addProduct(prod);
 	}
 }

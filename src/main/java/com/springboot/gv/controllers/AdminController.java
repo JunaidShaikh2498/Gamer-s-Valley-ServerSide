@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.gv.entities.Category;
 import com.springboot.gv.entities.Expert;
+import com.springboot.gv.entities.InsertCategory;
 import com.springboot.gv.services.CategoryService;
 import com.springboot.gv.services.ExpertService;
 import com.springboot.gv.services.RegisteredService;
@@ -46,14 +48,15 @@ public class AdminController {
 	@PutMapping("/revoke/{regid}")
 	public boolean revokeExpert(@PathVariable ("regid") int regid) {
 		boolean revoked=false;
-		if(rs.revokeExpert(regid)==0) {
+		if(rs.revokeExpert(regid)==1) {
 			revoked=true;
 		}
 		return revoked;
 	}
 	
 	@PostMapping("/add-category")
-	public Category addCategory(Category c) {
+	public Category addCategory(@RequestBody InsertCategory ic) {
+		Category c= new Category(ic.getCategoryName(), ic.getCategoryDescription());
 		return cs.saveCategory(c);
 	}
 }
