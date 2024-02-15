@@ -20,5 +20,13 @@ public class RegisteredService {
 	}
 	 public RegisteredUser saveRegistered(RegisteredUser r) {
 	       return rur.save(r);
-	    }
+	 }
+	 
+	 public int approveExpert(int rid) {
+		 return rur.updateApproval(rid);
+	 }
+	 
+	 public int revokeExpert(int rid) {
+		 return rur.revokeApproval(rid);
+	 }
 }

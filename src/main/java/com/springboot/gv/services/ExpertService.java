@@ -1,5 +1,7 @@
 package com.springboot.gv.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,9 @@ public class ExpertService {
 	
 	public Expert saveExpert(Expert e) {
 		return er.save(e);
+	}
+	
+	public List<Expert> getExperts(){
+		return er.findAll();
 	}
 }

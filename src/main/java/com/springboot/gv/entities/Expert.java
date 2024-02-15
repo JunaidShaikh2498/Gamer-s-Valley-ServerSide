@@ -36,7 +36,6 @@ public class Expert {
 	private String lastName;
 	
 	
-	private String username;
 	
 	
 	private String email;
@@ -52,7 +51,6 @@ public class Expert {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.username = username;
 		this.email = email;
 		this.qualification = qualification;
 		this.registered = registered;

@@ -11,6 +11,7 @@ import com.springboot.gv.entities.*;
 import com.springboot.gv.entities.InsertUser;
 import com.springboot.gv.services.CustomerService;
 import com.springboot.gv.services.ExpertService;
+import com.springboot.gv.services.RegisteredService;
 
 
 @RestController
@@ -20,7 +21,7 @@ public class RegisteredController {
 
 	
 	@Autowired
-    private com.springboot.gv.services.RegisteredService rs;
+    private RegisteredService rs;
 
     @Autowired
     private CustomerService cs;
