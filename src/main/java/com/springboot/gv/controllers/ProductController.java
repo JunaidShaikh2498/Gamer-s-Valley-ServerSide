@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.gv.entities.Category;
+import com.springboot.gv.entities.InsertProduct;
 import com.springboot.gv.entities.Product;
 import com.springboot.gv.services.CategoryService;
 import com.springboot.gv.services.ProductService;
@@ -45,5 +48,14 @@ public class ProductController {
 	
 	public List<Product> getByGreaterPrice(double price){
 		return ps.getByPriceGreaterThan(price);
+	}
+	
+	@PostMapping("addProduct/{cid}")
+	public Product addProd(@PathVariable("cid") int cid, @RequestBody InsertProduct ip) {
+		Category cat = cs.getByCategoryId(cid);
+		
+		Product prod = new Product(ip.getProductName(), ip.getProductDescription(), ip.getProductPrice(), cat);
+		
+		return prod;
 	}
 }
