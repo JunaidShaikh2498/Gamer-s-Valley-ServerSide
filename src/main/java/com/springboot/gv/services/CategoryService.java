@@ -23,5 +23,8 @@ public class CategoryService {
 	public Category getCategoryByName(String name) {
 		return cr.findByCategoryName(name);
 	}
+	public Category saveCategory(Category cat) {
+		return cr.save(cat); 
+	}
 }
 

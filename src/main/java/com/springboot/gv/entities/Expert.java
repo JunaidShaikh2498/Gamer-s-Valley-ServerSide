@@ -29,30 +29,27 @@ public class Expert {
 	@Column(name="Expert_Id")
 	private int expert_id;
 	
-	@Column(name="firstname")
+	@Column(name="Firstname")
 	private String firstName;
 	
-	@Column(name="lastname")
+	@Column(name="Lastname")
 	private String lastName;
 	
-	
-	private String username;
-	
-	
+	@Column
 	private String email;
 	
+	@Column
 	private String qualification;
 	
 	@OneToOne
-    @JoinColumn(name = "registration_id", referencedColumnName = "registration_id")
+    @JoinColumn(name = "Registration_Id")
     private RegisteredUser registered;
 
-	public Expert(String firstName, String lastName, String username, String email, String qualification,
+	public Expert(String firstName, String lastName, String email, String qualification,
 			RegisteredUser registered) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.username = username;
 		this.email = email;
 		this.qualification = qualification;
 		this.registered = registered;
