@@ -24,10 +24,10 @@ public class ExpertService {
 	}
 	
 	public Expert findByExpId(int rid) {
-		return er.findByExpert_Id(rid);
+		return er.findByExpertid(rid);
 	}
 	
-	public Expert updateExp(String firstname,String lastname, String email, String qualification,int regId) {
+	public int updateExp(String firstname,String lastname, String email, String qualification,int regId) {
 		
 		return er.updateExpert(firstname,lastname,email,qualification,regId);
 	}

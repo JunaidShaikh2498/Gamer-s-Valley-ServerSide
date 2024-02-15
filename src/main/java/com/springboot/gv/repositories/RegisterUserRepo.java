@@ -19,6 +19,6 @@ public interface RegisterUserRepo extends JpaRepository<RegisteredUser, Integer>
 	@Modifying
 	@Transactional
 	@Query(value="update Registered set Username =:username, Password =:password where Registration_Id =:rid",nativeQuery = true)
-	public RegisteredUser updateRU(String username, String password, int rid);
+	public int updateRU(String username, String password, int rid);
 	
 }

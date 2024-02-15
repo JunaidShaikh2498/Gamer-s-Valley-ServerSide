@@ -27,7 +27,7 @@ public class Expert {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="Expert_Id")
-	private int expert_id;
+	private int expertid;
 	
 	@Column(name="Firstname")
 	private String firstName;

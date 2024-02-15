@@ -10,11 +10,11 @@ import com.springboot.gv.entities.Expert;
 @Repository
 public interface ExpertRepo extends JpaRepository<Expert, Integer> {
 	
-	public Expert findByExpert_Id(int regId);
+	public Expert findByExpertid(int regId);
 	
 	@Transactional
 	@Modifying
-	@Query(value ="update Experts set Firstname =:firstname,Lastname =:lastname,Email =:email,Qualification =:qualification where Registration_Id =:registration_Id",nativeQuery = true)
-	public Expert updateExpert(String firstname,String lastname, String email, String qualification,int registration_Id);
+	@Query(value ="update experts set Firstname =:firstname,Lastname =:lastname,Email =:email,Qualification =:qualification where Registration_Id =:registration_Id",nativeQuery = true)
+	public int updateExpert(String firstname,String lastname, String email, String qualification,int registration_Id);
 	
 }
