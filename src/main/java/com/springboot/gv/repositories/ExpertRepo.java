@@ -1,5 +1,7 @@
 package com.springboot.gv.repositories;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,6 +17,8 @@ public interface ExpertRepo extends JpaRepository<Expert, Integer> {
 	
 	public Expert findByExpertid(int regId);
 	
+	@Query(value="select * from experts e where e.registration_id in (select registration_id from registered r where r.approved is not null)",nativeQuery = true)
+	public List<Expert> getAuthExperts();
 	
 	@Modifying
 	@Query(value ="update experts set Firstname =:firstname,Lastname =:lastname,Email =:email,Qualification =:qualification where Registration_Id =:registration_Id",nativeQuery = true)

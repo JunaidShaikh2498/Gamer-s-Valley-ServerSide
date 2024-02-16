@@ -33,7 +33,7 @@ public class AdminController {
 	
 	@GetMapping("/expertlist")
 	public List<Expert> getExpertList(){
-		return er.getExperts();
+		return er.getAuthorizedExperts();
 	}
 	
 	@PutMapping("/approve/{regid}")

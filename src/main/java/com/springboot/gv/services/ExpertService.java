@@ -27,8 +27,8 @@ public class ExpertService {
 	}
 	
 
-	public List<Expert> getExperts(){
-		return er.findAll();
+	public List<Expert> getAuthorizedExperts(){
+		return er.getAuthExperts();
 	}
 
 	public Expert findByExpId(int rid) {

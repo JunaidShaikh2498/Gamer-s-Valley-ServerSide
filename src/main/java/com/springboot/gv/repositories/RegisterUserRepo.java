@@ -23,8 +23,10 @@ public interface RegisterUserRepo extends JpaRepository<RegisteredUser, Integer>
 	@Query("update RegisteredUser set approved = 1 where registration_id =:reg_id")
 	public int updateApproval(int reg_id);
 	
+	
+	
 	@Modifying
-	@Query("update RegisteredUser set approved = 0 where registration_id =:reg_id")
+	@Query("update RegisteredUser set approved = null where registration_id =:reg_id")
 	public int revokeApproval(int reg_id);
 
 	@Transactional
