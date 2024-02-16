@@ -23,7 +23,7 @@ import lombok.Setter;
 public class RegisteredUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Registration_Id")
+	@Column
 	private int registration_id;
 	
 	@Column

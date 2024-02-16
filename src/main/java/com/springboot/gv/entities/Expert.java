@@ -26,14 +26,14 @@ public class Expert {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Expert_Id")
-	private int expertid;
+	@Column(name="expert_id")
+	private int expertId;
 	
-	@Column(name="Firstname")
-	private String firstName;
+	@Column
+	private String firstname;
 	
-	@Column(name="Lastname")
-	private String lastName;
+	@Column
+	private String lastname;
 	
 	@Column
 	private String email;
@@ -42,14 +42,14 @@ public class Expert {
 	private String qualification;
 	
 	@OneToOne
-    @JoinColumn(name = "Registration_Id")
+    @JoinColumn(name = "registration_id")
     private RegisteredUser registered;
 
 	public Expert(String firstName, String lastName, String email, String qualification,
 			RegisteredUser registered) {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.firstname = firstName;
+		this.lastname = lastName;
 		this.email = email;
 		this.qualification = qualification;
 		this.registered = registered;

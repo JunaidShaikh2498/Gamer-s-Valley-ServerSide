@@ -12,10 +12,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CustomerRepo extends JpaRepository<Customer, Integer> {
-	public Customer findByCustomerId(int regId);
+	
 	
 	@Transactional
 	@Modifying
-	@Query(value ="update customers set Firstname =:firstname,Lastname =:lastname,Email =:email, Contact =:contact, Address =:address where Registration_Id =:registration_Id",nativeQuery = true)
+	@Query(value ="update customers set firstname =:firstname,lastname =:lastname,email =:email, contact =:contact, address =:address where registration_id =:registration_Id",nativeQuery = true)
 	public int updateCustomer(String firstname,String lastname, String email, String contact, String address, int registration_Id);
 }

@@ -32,7 +32,15 @@ public class ExpertService {
 	}
 
 	public Expert findByExpId(int rid) {
-		return er.findByExpertid(rid);
+		Expert e =null;
+		Optional<Expert> oe = er.findById(rid);
+		try {
+			e=oe.get();
+		}
+		catch(Exception exc) {
+			exc.printStackTrace();
+		}
+		return e;
 	}
 	
 	public int updateExp(String firstname,String lastname, String email, String qualification,int regId) {

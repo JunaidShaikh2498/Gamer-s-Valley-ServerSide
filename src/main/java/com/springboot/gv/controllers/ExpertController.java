@@ -1,9 +1,11 @@
 package com.springboot.gv.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,9 +28,9 @@ public class ExpertController {
 	RegisteredService rs;
 	
 	@PutMapping("update/{expertid}")
-	public boolean upExp(@PathVariable("expertid") int regId, @RequestBody UpdateExp ue) {
+	public boolean upExp(@PathVariable("expertid") int expId, @RequestBody UpdateExp ue) {
 		boolean flag = false;
-		Expert e = es.findByExpId(regId);
+		Expert e = es.findByExpId(expId);
 		int reg = e.getRegistered().getRegistration_id();
 		rs.updateRuser(ue.getUsername(), ue.getPassword(), reg);
 		 
@@ -37,5 +39,9 @@ public class ExpertController {
 			flag = true;
 		}
 		return flag;
+	}
+	@GetMapping("/expert_list")
+	public List<Expert> getExperts(){
+		return es.getAuthorizedExperts();
 	}
 }

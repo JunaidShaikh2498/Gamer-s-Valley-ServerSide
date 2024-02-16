@@ -30,13 +30,13 @@ import lombok.Setter;
 public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Category_Id")
+	@Column(name = "category_id")
 	private int categoryId;
 	
-	@Column(name = "Category_Name")
+	@Column(name="category_name")
 	private String categoryName;
 	
-	@Column(name = "Category_Description")
+	@Column(name="category_description")
 	private String categoryDescription;
 	
 	@OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
@@ -61,16 +61,4 @@ public class Category {
 		this.products=products;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Category [categoryId=" + categoryId + ", categoryName=" + categoryName + ", categoryDescription="
-				+ categoryDescription + ", products=" + products + "]";
-	}
-
-
-
-
-
-	
 }

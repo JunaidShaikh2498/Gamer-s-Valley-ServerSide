@@ -19,7 +19,6 @@ public interface RegisterUserRepo extends JpaRepository<RegisteredUser, Integer>
 	public RegisteredUser findByUsername(String username);
 	
 	@Modifying
-
 	@Query("update RegisteredUser set approved = 1 where registration_id =:reg_id")
 	public int updateApproval(int reg_id);
 	
@@ -30,6 +29,6 @@ public interface RegisterUserRepo extends JpaRepository<RegisteredUser, Integer>
 	public int revokeApproval(int reg_id);
 
 	@Transactional
-	@Query(value="update Registered set Username =:username, Password =:password where Registration_Id =:rid",nativeQuery = true)
+	@Query(value="update Registered set username =:username, password =:password where registration_id =:rid",nativeQuery = true)
 	public int updateRU(String username, String password, int rid);
 	}

@@ -14,27 +14,27 @@ import lombok.Setter;
 @AllArgsConstructor
 
 @Entity
-@Table(name="Customers")
+@Table(name="customers")
 public class Customer {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Customer_Id")
+    @Column(name="customer_id")
     private int customerId;
 
-    @Column(name = "Firstname")
-    private String firstName;
+    @Column
+    private String firstname;
 
-    @Column(name = "Lastname")
-    private String lastName;
+    @Column
+    private String lastname;
 
-    @Column(name = "Email", unique = true)
+    @Column(unique = true)
     private String email;
 
-    @Column(name = "Contact")
+    @Column
     private String contact;
 
-    @Column(name = "Address")
+    @Column
     private String address;
 
     @OneToOne
@@ -44,8 +44,8 @@ public class Customer {
 	public Customer(String firstName, String lastName, String email, String contact, String address,
 			RegisteredUser registered) {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.firstname = firstName;
+		this.lastname = lastName;
 		this.email = email;
 		this.contact = contact;
 		this.address = address;
