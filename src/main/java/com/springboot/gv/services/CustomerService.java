@@ -13,4 +13,12 @@ public class CustomerService {
     public Customer saveCustomer(Customer c) {
        return cr.save(c);
     }
+    
+    public Customer findByCustId(int rid) {
+    	return cr.findByCustomerId(rid);
+    }
+    
+    public int updateCust(String firstname,String lastname, String email, String contact, String address, int regId) {
+    	return cr.updateCustomer(firstname, lastname, email, contact, address, regId);
+    }
 }
