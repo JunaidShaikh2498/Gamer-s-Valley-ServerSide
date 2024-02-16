@@ -49,7 +49,7 @@ public class RegisteredController {
     	RegisteredUser rr = new RegisteredUser(ie.getRoleId(),ie.getUsername(),ie.getPassword(),ie.getApproved());
     	RegisteredUser r= rs.saveRegistered(rr);
         
-        Expert e = new Expert(ie.getFirstname(),ie.getLastname(),ie.getUsername(),ie.getEmail(),ie.getQualification(),r);
+        Expert e = new Expert(ie.getFirstname(),ie.getLastname(),ie.getEmail(),ie.getQualification(),r);
         es.saveExpert(e);
 
         if(rr!=null && e!=null) {
