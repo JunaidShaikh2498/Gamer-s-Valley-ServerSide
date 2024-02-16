@@ -20,7 +20,7 @@ public class RegisteredService {
 	}
 	 public RegisteredUser saveRegistered(RegisteredUser r) {
 	       return rur.save(r);
-<<<<<<< HEAD
+
 	 }
 	 
 	 public int approveExpert(int rid) {
@@ -29,7 +29,6 @@ public class RegisteredService {
 	 
 	 public int revokeExpert(int rid) {
 		 return rur.revokeApproval(rid);
-=======
 	    }
 	 public RegisteredUser findByRegId(int rid) {
 		 RegisteredUser r = null;
@@ -45,6 +44,5 @@ public class RegisteredService {
 	 
 	 public int updateRuser(String username, String password, int rid) {
 		 return rur.updateRU(username, password, rid);
->>>>>>> 3f314094bd4f3db7428cc565bf9e62bd177565a8
 	 }
 }

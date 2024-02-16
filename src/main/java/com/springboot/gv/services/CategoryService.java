@@ -24,11 +24,12 @@ public class CategoryService {
 	public Category getCategoryByName(String name) {
 		return cr.findByCategoryName(name);
 	}
-<<<<<<< HEAD
+
 	
 	public Category saveCategory(Category cat) {
 		return cr.save(cat); 
 	}
+	
 	
 	public Category getByCategoryId(int catId) {
 		Category c = null;
@@ -41,10 +42,8 @@ public class CategoryService {
 		}
 		return c;
 	}
-=======
-	public Category saveCategory(Category cat) {
-		return cr.save(cat); 
-	}
->>>>>>> 3f314094bd4f3db7428cc565bf9e62bd177565a8
+
+	
+
 }
 
