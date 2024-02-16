@@ -26,7 +26,7 @@ public class LoginController {
 		}
 		
 		if(ru.getUsername().equals(lc.getUsername())  && ru.getPassword().equals(lc.getPassword())&&(ru.getApproved()==1)) {
-			role = ru.getRole_id();
+			role = ru.getRoleId();
 			System.out.println(role);
 			if(role!=2 && role!=3) {
 				role=-1;

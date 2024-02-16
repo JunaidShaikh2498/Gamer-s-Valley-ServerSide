@@ -1,8 +1,19 @@
 package com.springboot.gv.entities;
 
+import java.util.List;
+
 import javax.persistence.*;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+
+@NoArgsConstructor
+@AllArgsConstructor
 
 @Entity
 @Table(name="customers")
@@ -10,22 +21,22 @@ public class Customer {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Customer_Id")
+    @Column(name="customer_id")
     private int customerId;
 
-    @Column(name = "Firstname")
-    private String firstName;
+    @Column
+    private String firstname;
 
-    @Column(name = "Lastname")
-    private String lastName;
+    @Column
+    private String lastname;
 
-    @Column(name = "Email", unique = true)
+    @Column
     private String email;
 
-    @Column(name = "Contact")
+    @Column
     private String contact;
 
-    @Column(name = "Address")
+    @Column
     private String address;
 
     @OneToOne
@@ -35,8 +46,8 @@ public class Customer {
 	public Customer(String firstName, String lastName, String email, String contact, String address,
 			RegisteredUser registered) {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.firstname = firstName;
+		this.lastname = lastName;
 		this.email = email;
 		this.contact = contact;
 		this.address = address;

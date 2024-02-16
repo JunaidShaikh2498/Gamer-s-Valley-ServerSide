@@ -1,5 +1,7 @@
 package com.springboot.gv.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,11 +19,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-@Setter
 @Getter
+@Setter
 
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 
 @Entity
 @Table(name="products")
@@ -29,20 +31,20 @@ public class Product {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Product_Id")
+	@Column(name="product_id")
 	private int productId;
 	
-	@Column(name="Product_Name")
+	@Column(name="product_name")
 	private String productName;
 	
-	@Column(name="Product_Description")
+	@Column(name="product_description")
 	private String productDescription;
 	
-	@Column(name="Product_Price")
+	@Column(name="product_price")
 	private double productPrice;
 	
 	@ManyToOne
-	@JoinColumn(name="categoryId")
+	@JoinColumn(name="category_id")
 	@JsonIgnoreProperties("products")
 	private Category category;
 

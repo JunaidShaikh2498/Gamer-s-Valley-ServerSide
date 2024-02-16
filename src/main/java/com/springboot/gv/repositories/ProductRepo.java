@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.springboot.gv.entities.Category;
 import com.springboot.gv.entities.Product;
 
+
 public interface ProductRepo extends JpaRepository<Product, Integer> {
 
 	public List<Product> findByCategory(Category category);

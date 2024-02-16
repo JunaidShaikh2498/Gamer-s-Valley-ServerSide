@@ -26,33 +26,30 @@ public class Expert {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Expert_Id")
-	private int expert_id;
+	@Column(name="expert_id")
+	private int expertId;
 	
-	@Column(name="firstname")
-	private String firstName;
+	@Column
+	private String firstname;
 	
-	@Column(name="lastname")
-	private String lastName;
+	@Column
+	private String lastname;
 	
-	
-	private String username;
-	
-	
+	@Column
 	private String email;
 	
+	@Column
 	private String qualification;
 	
 	@OneToOne
     @JoinColumn(name = "registration_id", referencedColumnName = "registration_id")
     private RegisteredUser registered;
 
-	public Expert(String firstName, String lastName, String username, String email, String qualification,
+	public Expert(String firstname, String lastname, String email, String qualification,
 			RegisteredUser registered) {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.username = username;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.email = email;
 		this.qualification = qualification;
 		this.registered = registered;

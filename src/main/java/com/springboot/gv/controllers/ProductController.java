@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +15,7 @@ import com.springboot.gv.services.CategoryService;
 import com.springboot.gv.services.ProductService;
 
 @RestController
-
+@CrossOrigin("http://localhost:3000")
 public class ProductController {
 	
 	@Autowired
@@ -45,5 +46,10 @@ public class ProductController {
 	
 	public List<Product> getByGreaterPrice(double price){
 		return ps.getByPriceGreaterThan(price);
+	}
+	
+	@GetMapping("/allProds")
+	public List<Product> getAllProducts(){
+		return ps.getAllProducts();
 	}
 }
