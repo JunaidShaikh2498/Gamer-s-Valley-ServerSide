@@ -39,7 +39,7 @@ public class Customer {
     private String address;
 
     @OneToOne
-    @JoinColumn(name = "Registration_Id", referencedColumnName = "Registration_Id")
+    @JoinColumn(name = "Registration_Id")
     private RegisteredUser registered;
 
 	public Customer(String firstName, String lastName, String email, String contact, String address,

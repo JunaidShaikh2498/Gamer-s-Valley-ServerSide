@@ -40,4 +40,9 @@ public class ExpertService {
 		return er.updateExpert(firstname,lastname,email,qualification,regId);
 
 	}
+
+
+	public List<Expert> getAuthorizedExperts(){
+		return er.getAuthExperts();
+	}
 }

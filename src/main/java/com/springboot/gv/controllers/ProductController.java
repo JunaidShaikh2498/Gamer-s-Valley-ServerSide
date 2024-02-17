@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ import com.springboot.gv.services.CategoryService;
 import com.springboot.gv.services.ProductService;
 
 @RestController
-
+@CrossOrigin("http://localhost:3000")
 public class ProductController {
 	
 	@Autowired
@@ -32,6 +33,17 @@ public class ProductController {
 	}
 	@GetMapping("/home/{cname}")
 	public ResponseEntity<List<Product>> getByCategory(@PathVariable("cname") String cname){
+		Category cat = cs.getCategoryByName(cname);
+		
+		if(cat==null) {
+			 return ResponseEntity.notFound().build();
+		}
+		 List<Product> products = ps.getByCategory(cat);
+		 
+		 return ResponseEntity.ok(products);
+	}
+	@GetMapping("/products/{cname}")
+	public ResponseEntity<List<Product>> getCategoryByName(@PathVariable("cname") String cname){
 		Category cat = cs.getCategoryByName(cname);
 		
 		if(cat==null) {

@@ -1,16 +1,16 @@
 package com.springboot.gv.controllers;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.gv.entities.Expert;
-import com.springboot.gv.entities.RegisteredUser;
 import com.springboot.gv.entities.UpdateExp;
 import com.springboot.gv.services.ExpertService;
 import com.springboot.gv.services.RegisteredService;
@@ -37,5 +37,9 @@ public class ExpertController {
 			flag = true;
 		}
 		return flag;
+	}
+	@GetMapping("/expert_list")
+	public List<Expert> getExperts(){
+		return es.getAuthorizedExperts();
 	}
 }
