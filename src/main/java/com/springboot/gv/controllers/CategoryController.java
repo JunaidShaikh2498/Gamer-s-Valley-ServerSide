@@ -12,6 +12,7 @@ import com.springboot.gv.entities.Category;
 import com.springboot.gv.services.CategoryService;
 
 @RestController
+
 @CrossOrigin("http://localhost:3000")
 public class CategoryController {
 	

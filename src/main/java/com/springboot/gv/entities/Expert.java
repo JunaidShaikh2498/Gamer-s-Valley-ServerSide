@@ -1,6 +1,7 @@
 package com.springboot.gv.entities;
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -42,20 +43,17 @@ public class Expert {
 	private String qualification;
 	
 	@OneToOne
-    @JoinColumn(name = "registration_id", referencedColumnName = "registration_id")
+    @JoinColumn(name = "registration_id")
     private RegisteredUser registered;
 
-	public Expert(String firstname, String lastname, String email, String qualification,
+
+	public Expert(String firstName, String lastName, String email, String qualification,
 			RegisteredUser registered) {
 		super();
-		this.firstname = firstname;
-		this.lastname = lastname;
+		this.firstname = firstName;
+		this.lastname = lastName;
 		this.email = email;
 		this.qualification = qualification;
 		this.registered = registered;
 	}
-
-	
-	
-	
 }

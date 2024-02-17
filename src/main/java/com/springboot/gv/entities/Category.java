@@ -3,6 +3,7 @@ package com.springboot.gv.entities;
 import java.util.List;
 
 
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,7 +32,7 @@ import lombok.Setter;
 public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="category_id")
+	@Column(name = "category_id")
 	private int categoryId;
 	
 	@Column(name="category_name")
@@ -60,5 +61,6 @@ public class Category {
 			p.setCategory(this);
 		}
 		this.products=products;
-	}	
+	}
+
 }

@@ -2,7 +2,10 @@ package com.springboot.gv.entities;
 
 import java.util.List;
 
+
 import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,6 +27,7 @@ import lombok.Setter;
 public class RegisteredUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	@Column(name="registration_id")
 	private int registrationId;
 	
@@ -36,6 +40,7 @@ public class RegisteredUser {
 	@Column
 	private String password;
 	
+
 	@Column
 	private int approved;
 

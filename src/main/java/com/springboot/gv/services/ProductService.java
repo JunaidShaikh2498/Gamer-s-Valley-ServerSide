@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springboot.gv.entities.Category;
+import com.springboot.gv.entities.InsertProduct;
 import com.springboot.gv.entities.Product;
 import com.springboot.gv.repositories.ProductRepo;
 
@@ -14,6 +15,7 @@ public class ProductService {
 
 	@Autowired
 	ProductRepo pr;
+	
 	
 	public List<Product> getAllProducts(){
 		return pr.findAll();
@@ -29,5 +31,8 @@ public class ProductService {
 	
 	public List<Product> getByPriceGreaterThan(double price){
 		return pr.findByProductPriceGreaterThan(price);
+	}
+	public Product addProduct(Product p) {
+		return pr.save(p);
 	}
 }
