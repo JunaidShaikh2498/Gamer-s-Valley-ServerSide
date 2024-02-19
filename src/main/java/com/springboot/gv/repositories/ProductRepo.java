@@ -14,4 +14,5 @@ public interface ProductRepo extends JpaRepository<Product, Integer> {
 	public List<Product> findByProductPriceLessThan(double price);
 	
 	public List<Product> findByProductPriceGreaterThan(double price);
+	
 }

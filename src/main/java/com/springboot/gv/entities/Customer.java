@@ -6,13 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 
 @NoArgsConstructor
 @AllArgsConstructor
-
+@ToString
 
 @Entity
 @Table(name="Customers")
@@ -20,33 +21,33 @@ public class Customer {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Customer_Id")
+    @Column
     private int customerId;
 
-    @Column(name = "Firstname")
-    private String firstName;
+    @Column
+    private String firstname;
 
-    @Column(name = "Lastname")
-    private String lastName;
+    @Column
+    private String lastname;
 
-    @Column(name = "Email", unique = true)
+    @Column(unique = true)
     private String email;
 
-    @Column(name = "Contact")
+    @Column
     private String contact;
 
-    @Column(name = "Address")
+    @Column
     private String address;
 
     @OneToOne
-    @JoinColumn(name = "Registration_Id")
+    @JoinColumn(name = "registration_id")
     private RegisteredUser registered;
 
 	public Customer(String firstName, String lastName, String email, String contact, String address,
 			RegisteredUser registered) {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.firstname = firstName;
+		this.lastname = lastName;
 		this.email = email;
 		this.contact = contact;
 		this.address = address;
