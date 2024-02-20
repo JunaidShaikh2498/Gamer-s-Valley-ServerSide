@@ -43,8 +43,9 @@ public class LoginController {
 				LoggedUser lu = new LoggedUser(ru.getRegistrationId(),ru.getRoleId(),ru.getUsername(),ru.getApproved());
 				rru= ResponseEntity.ok(lu);
 			}
+			
 			return rru;
 	
 		
-}
+	}
 }

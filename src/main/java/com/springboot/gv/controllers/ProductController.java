@@ -2,6 +2,7 @@ package com.springboot.gv.controllers;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,20 +32,22 @@ public class ProductController {
 	public List<Product> getAllProductList(){
 		return ps.getAllProducts();
 	}
-	@GetMapping("/products/{cname}")
-	public ResponseEntity<List<Product>> getByCategory(@PathVariable("cname") String cname){
-		Category cat = cs.getCategoryByName(cname);
-		
-		if(cat==null) {
-			 return ResponseEntity.notFound().build();
-		}
-		 List<Product> products = ps.getByCategory(cat);
-		 
-		 return ResponseEntity.ok(products);
-	}
 	
 	@GetMapping("/home/{cname}")
 	public ResponseEntity<List<Product>> getByCategoryName(@PathVariable("cname") String cname){
+	Category cat = cs.getCategoryByName(cname);
+			
+			if(cat==null) {
+				 return ResponseEntity.notFound().build();
+			}
+			 List<Product> products = ps.getByCategory(cat);
+			 
+			 return ResponseEntity.ok(products);
+	}
+
+	@GetMapping("/products/{cname}")
+	public ResponseEntity<List<Product>> getCategoryByName(@PathVariable("cname") String cname){
+
 		Category cat = cs.getCategoryByName(cname);
 		
 		if(cat==null) {
@@ -54,16 +57,6 @@ public class ProductController {
 		 
 		 return ResponseEntity.ok(products);
 	}
-	
-	@GetMapping("/productlistltp")
-	public List<Product> getByLesserPrice(double price){
-		return ps.getByPriceLessThan(price);
-	}
-	@GetMapping("/productlistgtp")
-	public List<Product> getByGreaterPrice(double price){
-		return ps.getByPriceGreaterThan(price);
-	}
-	
 
 	@GetMapping("/allProds")
 	public List<Product> getAllProducts(){

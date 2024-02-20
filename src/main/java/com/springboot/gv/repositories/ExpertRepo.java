@@ -1,11 +1,9 @@
 package com.springboot.gv.repositories;
 
+
 import java.util.List;
-
-
-
-
 import com.springboot.gv.entities.Expert;
+
 
 
 
@@ -32,5 +30,6 @@ public interface ExpertRepo extends JpaRepository<Expert, Integer> {
 	@Modifying
 	@Query(value ="update experts set firstname =:firstname,lastname =:lastname,email =:email,qualification =:qualification where registration_id =:registration_Id",nativeQuery = true)
 	public int updateExpert(String firstname,String lastname, String email, String qualification,int registration_Id);
+
 
 }

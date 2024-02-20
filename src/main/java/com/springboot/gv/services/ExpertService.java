@@ -52,9 +52,11 @@ public class ExpertService {
 		
 		return er.updateExpert(firstname,lastname,email,qualification,regId);
 	}
+
 	public Expert findByRegId(int regId)
 	{
 		return er.getByRegId(regId);
 	}
 	
+
 }
