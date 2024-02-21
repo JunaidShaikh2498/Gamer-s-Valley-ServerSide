@@ -1,6 +1,8 @@
 package com.springboot.gv.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +30,9 @@ public class RegisteredController {
     
     @Autowired
     private ExpertService es;
+    
+    @Autowired
+    JavaMailSender sender;
 
     @PostMapping("/save")
     public boolean saveRegistration(@RequestBody InsertUser iu) {
@@ -37,6 +42,12 @@ public class RegisteredController {
         
         Customer c = new Customer(iu.getFirstname(),iu.getLastname(),iu.getEmail(),iu.getContact(),iu.getAddress(),r);
         cs.saveCustomer(c);
+        SimpleMailMessage mailMsg = new SimpleMailMessage();
+        mailMsg.setFrom("hrishi3bhogade@gmail.com");
+        mailMsg.setTo(c.getEmail());
+        mailMsg.setSubject("Wait for Admin's Approval");
+        mailMsg.setText("Congratulations "+c.getFirstname()+". You have registered successfully. You can now login and enjoy the services of Gamers Valley. Gamers Valley will enhace your gaming experience with optimistic suggestions and feedbacks from our authorised experts. Thank you!!!");
+        sender.send(mailMsg);
 
         if(rr!=null && c!=null) {
         	flag = true;
@@ -45,16 +56,23 @@ public class RegisteredController {
     }
     @PostMapping("/saveExp")
     public boolean saveExpReg(@RequestBody InsertExpert ie) {
-    	boolean flag = false;
-    	RegisteredUser rr = new RegisteredUser(ie.getRoleId(),ie.getUsername(),ie.getPassword(),ie.getApproved());
-    	RegisteredUser r= rs.saveRegistered(rr);
+    	boolean flag = true;
+    	try {
+	    	RegisteredUser rr = new RegisteredUser(ie.getRoleId(),ie.getUsername(),ie.getPassword(),ie.getApproved());
+	    	RegisteredUser r= rs.saveRegistered(rr);
+	        
+	        Expert e = new Expert(ie.getFirstname(),ie.getLastname(),ie.getEmail(),ie.getQualification(),r);
+	        es.saveExpert(e);
+	        SimpleMailMessage mailMsg = new SimpleMailMessage();
+	        mailMsg.setFrom("hrishi3bhogade@gmail.com");
+	        mailMsg.setTo(e.getEmail());
+	        mailMsg.setSubject("Wait for Admin's Approval");
+	        mailMsg.setText("Congratulations "+e.getFirstName()+". You have registered successfully as an Expert. Please wait for Admin's approval. You can login after Admin's approval. Thank you!!!");
+	        sender.send(mailMsg);
+    	}catch(Exception e) {
+    		flag = false;
+    	}
         
-        Expert e = new Expert(ie.getFirstname(),ie.getLastname(),ie.getEmail(),ie.getQualification(),r);
-        es.saveExpert(e);
-
-        if(rr!=null && e!=null) {
-        	flag = true;
-        }
         return flag;
     }
 }

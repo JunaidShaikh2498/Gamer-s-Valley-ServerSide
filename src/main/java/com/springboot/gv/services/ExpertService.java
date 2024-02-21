@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springboot.gv.entities.Category;
 import com.springboot.gv.entities.Expert;
 import com.springboot.gv.entities.RegisteredUser;
 import com.springboot.gv.repositories.ExpertRepo;
@@ -31,7 +32,7 @@ public class ExpertService {
 		return er.findAll();
 	}
 
-	public Expert findByExpId(int rid) {
+	public Expert findByExpId(RegisteredUser rid) {
 		return er.findByExpertid(rid);
 	}
 	
@@ -40,7 +41,18 @@ public class ExpertService {
 		return er.updateExpert(firstname,lastname,email,qualification,regId);
 
 	}
-
+	
+	public Expert getExpertByExpId(int eid) {
+		Expert e = null;
+		Optional<Expert> oc = er.findById(eid);
+		try {
+			e=oc.get();
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return e;
+	}
 
 	public List<Expert> getAuthorizedExperts(){
 		return er.getAuthExperts();

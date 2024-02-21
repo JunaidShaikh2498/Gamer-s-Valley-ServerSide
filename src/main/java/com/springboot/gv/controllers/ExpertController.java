@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.gv.entities.Expert;
+import com.springboot.gv.entities.RegisteredUser;
 import com.springboot.gv.entities.UpdateExp;
 import com.springboot.gv.services.ExpertService;
 import com.springboot.gv.services.RegisteredService;
@@ -28,7 +29,8 @@ public class ExpertController {
 	@PutMapping("update/{expertid}")
 	public boolean upExp(@PathVariable("expertid") int regId, @RequestBody UpdateExp ue) {
 		boolean flag = false;
-		Expert e = es.findByExpId(regId);
+		RegisteredUser ru = rs.findByRegId(regId); 
+		Expert e = es.findByExpId(ru);
 		int reg = e.getRegistered().getRegistration_id();
 		rs.updateRuser(ue.getUsername(), ue.getPassword(), reg);
 		 

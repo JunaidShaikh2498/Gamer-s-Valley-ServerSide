@@ -8,14 +8,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import com.springboot.gv.entities.Expert;
+import com.springboot.gv.entities.Expert;import com.springboot.gv.entities.RegisteredUser;
 
 
 @Transactional
 @Repository
 public interface ExpertRepo extends JpaRepository<Expert, Integer> {
 	
-	public Expert findByExpertid(int regId);
+	@Query("select e from Expert e where e.registered = :regid")
+	public Expert findByExpertid(RegisteredUser regid);
 	
 	
 	@Modifying
@@ -25,5 +26,6 @@ public interface ExpertRepo extends JpaRepository<Expert, Integer> {
 
 	@Query(value="select * from experts e where e.registration_id in (select registration_id from registered r where r.approved is not null)",nativeQuery = true)
 	public List<Expert> getAuthExperts();
+	
 
 }
