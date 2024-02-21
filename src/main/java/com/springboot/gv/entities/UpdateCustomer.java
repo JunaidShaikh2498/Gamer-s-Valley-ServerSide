@@ -20,5 +20,4 @@ public class UpdateCustomer {
 	
 	private String username;
 	
-	private String password;
 }

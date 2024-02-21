@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.gv.entities.Category;
 import com.springboot.gv.entities.InsertProduct;
 import com.springboot.gv.entities.Product;
+import com.springboot.gv.entities.UpdatePrice;
 import com.springboot.gv.services.CategoryService;
 import com.springboot.gv.services.ProductService;
 
@@ -27,7 +29,7 @@ public class ProductController {
 	@Autowired
 	CategoryService cs;
 	
-	@GetMapping("/")
+	@GetMapping("/getallprods")
 	public List<Product> getAllProductList(){
 		return ps.getAllProducts();
 	}
@@ -71,5 +73,14 @@ public class ProductController {
 		Product prod = new Product(ip.getProductName(), ip.getProductDescription(), ip.getProductPrice(), cat);
 		
 		return ps.addProduct(prod);
+	}
+	
+	@PutMapping("/{pid}/updatePrice")
+	public boolean updateProdPrice(@RequestBody UpdatePrice up,@PathVariable("pid") int prodId) {
+		boolean flag=false;
+		if(ps.updateProdPrice(up.getProductPrice(), prodId)==1) {
+			flag = true;
+		}
+		return flag;
 	}
 }

@@ -27,12 +27,13 @@ public class ExpertController {
 	@Autowired
 	RegisteredService rs;
 	
-	@PutMapping("update/{expertid}")
-	public boolean upExp(@PathVariable("expertid") int expId, @RequestBody UpdateExp ue) {
+	@PutMapping("update/{regid}")
+	public boolean upExp(@PathVariable("regid") int regId, @RequestBody UpdateExp ue) {
 		boolean flag = false;
-		Expert e = es.findByExpId(expId);
+		RegisteredUser ru = rs.findByRegId(regId);
+		Expert e = es.getExpertByRid(ru);
 		int reg = e.getRegistered().getRegistration_id();
-		rs.updateRuser(ue.getUsername(), ue.getPassword(), reg);
+		rs.updateRuser(ue.getUsername(), reg);
 		 
 		int res = es.updateExp(ue.getFirstname(), ue.getLastname(), ue.getEmail(), ue.getQualification(),reg);
 		if(res==1) {
@@ -40,8 +41,16 @@ public class ExpertController {
 		}
 		return flag;
 	}
+	
 	@GetMapping("/expert_list")
 	public List<Expert> getExperts(){
 		return es.getAuthorizedExperts();
+	}
+	
+	@GetMapping("/getexpert/{rid}")
+	public Expert getByRid(@PathVariable ("rid") int rid) {
+		RegisteredUser ru = rs.findByRegId(rid);
+		Expert e = es.getExpertByRid(ru);
+		return e;
 	}
 }

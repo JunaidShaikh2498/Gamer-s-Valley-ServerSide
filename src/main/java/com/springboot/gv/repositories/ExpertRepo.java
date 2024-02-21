@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import com.springboot.gv.entities.Expert;
+import com.springboot.gv.entities.RegisteredUser;
 
 
 @Transactional
@@ -16,6 +17,10 @@ import com.springboot.gv.entities.Expert;
 public interface ExpertRepo extends JpaRepository<Expert, Integer> {
 	
 	
+	
+	
+	@Query( "select e from Expert where e.registered =:regid")
+	public Expert getByRegId(RegisteredUser regid);
 	
 	@Query(value="select * from experts e where e.registration_id in (select registration_id from registered r where r.approved is not null)",nativeQuery = true)
 	public List<Expert> getAuthExperts();

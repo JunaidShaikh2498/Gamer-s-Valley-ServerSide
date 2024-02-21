@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -26,8 +28,9 @@ public class RegisteredUser {
 	@Column
 	private int registration_id;
 	
-	@Column
-	private int role_id;
+	@ManyToOne
+	@JoinColumn(name="role_id")
+	private Role role;
 	@Column
 	private String username;
 	@Column
@@ -35,9 +38,9 @@ public class RegisteredUser {
 	@Column
 	private int approved;
 
-	public RegisteredUser(int role_id, String username, String password, int approved) {
+	public RegisteredUser(Role role, String username, String password, int approved) {
 		super();
-		this.role_id = role_id;
+		this.role=role;
 		this.username = username;
 		this.password = password;
 		this.approved = approved;

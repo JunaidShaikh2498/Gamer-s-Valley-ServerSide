@@ -48,4 +48,7 @@ public class ExpertService {
 		return er.updateExpert(firstname,lastname,email,qualification,regId);
 
 	}
+	public Expert getExpertByRid(RegisteredUser ru) {
+		return er.getByRegId(ru);
+	}
 }

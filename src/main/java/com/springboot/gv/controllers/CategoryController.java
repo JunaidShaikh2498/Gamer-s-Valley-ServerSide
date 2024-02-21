@@ -12,15 +12,18 @@ import com.springboot.gv.entities.Category;
 import com.springboot.gv.services.CategoryService;
 
 @RestController
-
 @CrossOrigin("http://localhost:3000")
 public class CategoryController {
 	
 	@Autowired
 	CategoryService cs;
 	
+	@GetMapping("/cats")
+	public List<Category> getAllCategoriesLogin(){
+		return cs.getCategories();
+	}
 	@GetMapping("/home")
-	public List<Category> getAllCategories(){
+	public List<Category> getAllCategoriesHome(){
 		return cs.getCategories();
 	}
 }

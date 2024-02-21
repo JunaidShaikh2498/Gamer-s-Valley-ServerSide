@@ -42,7 +42,7 @@ public class RegisteredService {
 		 return r;
 	 }
 	 
-	 public int updateRuser(String username, String password, int rid) {
-		 return rur.updateRU(username, password, rid);
+	 public int updateRuser(String username, int rid) {
+		 return rur.updateRU(username, rid);
 	 }
 }

@@ -26,7 +26,7 @@ public class CustomerController {
 		boolean flag = false;
 		Customer c = cs.findByCustId(regId);
 		int reg = c.getRegistered().getRegistration_id();
-		rs.updateRuser(uc.getUsername(), uc.getPassword(), reg);
+		rs.updateRuser(uc.getUsername(),reg);
 		 
 		int res = cs.updateCust(uc.getFirstname(), uc.getLastname(), uc.getEmail(), uc.getContact(),uc.getAddress(),reg);
 		if(res==1) {

@@ -35,4 +35,7 @@ public class ProductService {
 	public Product addProduct(Product p) {
 		return pr.save(p);
 	}
+	public int updateProdPrice(double price,int pid) {
+		return pr.updatePrice(price, pid);
+	}
 }
