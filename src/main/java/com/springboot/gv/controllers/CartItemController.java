@@ -11,7 +11,7 @@ import com.springboot.gv.services.ProductService;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("http://localhost:3000") 
 public class CartItemController {
 
     @Autowired

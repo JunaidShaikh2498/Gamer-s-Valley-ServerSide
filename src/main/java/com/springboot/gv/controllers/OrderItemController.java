@@ -9,7 +9,7 @@ import com.springboot.gv.entities.Order_Item;
 import com.springboot.gv.services.OrderItemService;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("http://localhost:3000") 
 public class OrderItemController {
 	@Autowired
 	OrderItemService ois;

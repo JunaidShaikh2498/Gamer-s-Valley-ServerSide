@@ -34,7 +34,7 @@ import com.springboot.gv.services.OrderStatusService;
 import com.springboot.gv.services.ProductService;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("http://localhost:3000") 
 public class OrderController {
 	@Autowired
 	OrderService os;

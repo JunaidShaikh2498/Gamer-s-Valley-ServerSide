@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.springboot.gv.services.OrderStatusService;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("http://localhost:3000") 
 public class OrderStatusController {
 	@Autowired
 	OrderStatusService oss;

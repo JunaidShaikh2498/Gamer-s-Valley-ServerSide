@@ -12,7 +12,7 @@ import com.springboot.gv.entities.Address;
 import com.springboot.gv.services.AddressService;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("http://localhost:3000") 
 public class AddressController {
 	@Autowired
 	AddressService as;
