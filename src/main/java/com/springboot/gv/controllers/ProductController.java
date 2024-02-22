@@ -28,7 +28,7 @@ public class ProductController {
 	@Autowired
 	CategoryService cs;
 	
-	@GetMapping("/")
+	@GetMapping("/products")
 	public List<Product> getAllProductList(){
 		return ps.getAllProducts();
 	}

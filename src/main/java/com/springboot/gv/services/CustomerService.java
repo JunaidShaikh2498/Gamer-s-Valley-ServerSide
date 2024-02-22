@@ -1,5 +1,7 @@
+
 package com.springboot.gv.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,19 @@ public class CustomerService {
     		e.printStackTrace();
     	}
     	return c;
+    }
+    
+    public Customer getCustomerByRegistrationId(int registrationId) {
+    	List<Customer> clist= cr.findAll();
+    	Customer cust=null;
+    	for(Customer c :clist)
+    	{
+    		if(c.getRegistered().getRegistrationId()==registrationId)
+    		{
+    			cust=c;
+    		}
+    	}
+        return cust;
     }
     
     public int updateCust(String firstname,String lastname, String email, String contact, String address, int regId) {

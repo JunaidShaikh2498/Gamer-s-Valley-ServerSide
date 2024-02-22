@@ -16,19 +16,21 @@ public class CartItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int id; 
 
-    @ManyToOne
-    @JoinColumn(name = "cart_id")
-    private Cart cart;
-
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @Column(name = "quantity")
+    @Column
     private int quantity;
 
+	public CartItem(Product product, int quantity) {
+		super();
+		this.product = product;
+		this.quantity = quantity;
+	}
+    
     // Constructors, getters, setters, etc.
 }
 

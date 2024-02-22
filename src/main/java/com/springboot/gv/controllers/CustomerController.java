@@ -1,7 +1,11 @@
 package com.springboot.gv.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,4 +38,11 @@ public class CustomerController {
 		}
 		return flag;
 	}
+	
+	@GetMapping("getCustByRegId/{registration_id}")
+    public Customer getCustomerByRegistrationId(@PathVariable int registration_id) {
+        Customer customerOptional = cs.getCustomerByRegistrationId(registration_id);
+
+        return customerOptional;
+    }
 }

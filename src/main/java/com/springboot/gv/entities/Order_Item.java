@@ -1,9 +1,9 @@
 package com.springboot.gv.entities;
 
-import java.sql.Date;
-import java.util.List;
+
 
 import javax.persistence.*;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -12,6 +12,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,17 +24,35 @@ public class Order_Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+
     @JsonIgnoreProperties("orderItemList")
     @ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="product_id")
     private Product product;
 
-    @Column(name = "quantity")
+    @Column
     private int quantity;
 
+    @Column
+    private double price;
+    
     
     @JsonIgnoreProperties("orderitemList")
     @ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="order_id")
     private Order order;
+    
+    
+
+	public Order_Item(Product product, int quantity,double price, Order order) {
+		super();
+		this.product = product;
+		this.quantity = quantity;
+		this.order = order;
+		this.price = price;
+	}
+
+
+	
+    
 }
