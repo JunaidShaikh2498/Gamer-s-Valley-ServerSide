@@ -105,8 +105,12 @@ public class AppSecurityConfigurer {
 			authorize.antMatchers("/addProduct/*").hasAuthority("Admin");
 			authorize.antMatchers("/*/updatePrice").hasAuthority("Admin");
 			authorize.antMatchers("/editProfileE").hasAuthority("Expert");
-			authorize.antMatchers("/products/*").hasAuthority("Customer");
+			authorize.antMatchers("/getCustByRegId/*").hasAuthority("Customer");
+			authorize.antMatchers("/updateC/*").hasAuthority("Customer");
 			authorize.antMatchers("/deleteCartItem/*").hasAuthority("Customer");
+			authorize.antMatchers("/answer/**").hasAuthority("Expert");
+			authorize.antMatchers("/ask/*").hasAuthority("Customer");
+			authorize.antMatchers("/placeOrder").hasAuthority("Customer");
 			//authorize.antMatchers("/cats").permitAll();
 //			authorize.requestMatchers(new AntPathRequestMatcher("")).hasAuthority("Admin");
 //			authorize.requestMatchers(new AntPathRequestMatcher("/")).permitAll();

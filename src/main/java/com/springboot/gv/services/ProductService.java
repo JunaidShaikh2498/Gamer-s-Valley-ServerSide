@@ -1,6 +1,7 @@
 package com.springboot.gv.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,18 @@ public class ProductService {
 	
 	public List<Product> getAllProducts(){
 		return pr.findAll();
+	}
+	
+	public Product getById(int id) {
+		Product p =null;
+		Optional<Product> op = pr.findById(id);
+		try {
+			p=op.get();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return p;
 	}
 	
 	public List<Product> getByCategory(Category cat){

@@ -19,7 +19,7 @@ public interface ExpertRepo extends JpaRepository<Expert, Integer> {
 	
 	
 	
-	@Query( "select e from Expert where e.registered =:regid")
+	@Query( "select e from Expert e where e.registered =:regid")
 	public Expert getByRegId(RegisteredUser regid);
 	
 	@Query(value="select * from experts e where e.registration_id in (select registration_id from registered r where r.approved is not null)",nativeQuery = true)

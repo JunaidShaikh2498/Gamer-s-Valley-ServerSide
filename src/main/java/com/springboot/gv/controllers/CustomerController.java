@@ -2,14 +2,19 @@ package com.springboot.gv.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.gv.entities.Customer;
+import com.springboot.gv.entities.Question;
+import com.springboot.gv.entities.QuestionBody;
 import com.springboot.gv.entities.UpdateCustomer;
 import com.springboot.gv.services.CustomerService;
+import com.springboot.gv.services.QuestionService;
 import com.springboot.gv.services.RegisteredService;
 
 @RestController
@@ -21,7 +26,16 @@ public class CustomerController {
 	@Autowired
 	RegisteredService rs;
 	
-	@PutMapping("updateC/{customerid}")
+	
+	@Autowired
+	QuestionService qs;
+	
+	@GetMapping("/getCustByRegId/{rid}")
+	public Customer getByRegId(@PathVariable("rid") int rid) {
+		return cs.getByRegId(rid);
+	}
+	
+	@PutMapping("/updateC/{customerid}")
 	public boolean upCust(@PathVariable("customerid") int regId, @RequestBody UpdateCustomer uc) {
 		boolean flag = false;
 		Customer c = cs.findByCustId(regId);
@@ -34,4 +48,12 @@ public class CustomerController {
 		}
 		return flag;
 	}
+	
+	@PostMapping("/ask/{cid}")
+	public Question askAQuestion(@PathVariable("cid") int cid ,@RequestBody QuestionBody qb) {
+		Customer c = cs.findByCustId(cid);
+		
+		Question q = new Question(qb.getQue(),c);
+		return qs.askQues(q);
+	}	
 }
