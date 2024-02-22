@@ -8,7 +8,7 @@ import com.springboot.gv.entities.Order_Status;
 import com.springboot.gv.repositories.OrderStatusRepo;
 
 @Service
-public class OrderStatusService {
+public class OrderStatusService  {
 	@Autowired
 	OrderStatusRepo osr;
 	

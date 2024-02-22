@@ -11,7 +11,7 @@ import com.springboot.gv.repositories.ProductRepo;
 import java.util.List;
 
 @Service
-public class CartItemService {
+public class CartItemService  {
 
     @Autowired
     private CartItemRepository cartItemRepository;

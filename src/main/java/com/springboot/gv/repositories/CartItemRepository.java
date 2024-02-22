@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.springboot.gv.entities.CartItem;
 
-@Repository
+@Repository 
 public interface CartItemRepository extends JpaRepository<CartItem, Integer> {
 
 }

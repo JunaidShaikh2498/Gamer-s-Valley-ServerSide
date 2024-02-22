@@ -8,3 +8,4 @@ import com.springboot.gv.entities.Order;
 public interface OrderRepo extends JpaRepository<Order, Integer> {
 
 }
+ 

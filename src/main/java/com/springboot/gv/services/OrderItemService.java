@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.springboot.gv.entities.Order_Item;
 import com.springboot.gv.repositories.OrderItemsRepo;
 @Service
-public class OrderItemService {
+public class OrderItemService  {
 	@Autowired
 	OrderItemsRepo oir;
 	

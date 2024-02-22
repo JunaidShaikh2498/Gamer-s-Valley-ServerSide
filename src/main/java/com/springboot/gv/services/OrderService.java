@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.springboot.gv.entities.Order;
 import com.springboot.gv.repositories.OrderRepo;
 @Service
-public class OrderService {
+public class OrderService  {
 	
 	@Autowired
 	OrderRepo or;
