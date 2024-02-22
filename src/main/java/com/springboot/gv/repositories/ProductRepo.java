@@ -12,8 +12,11 @@ import org.springframework.stereotype.Repository;
 import com.springboot.gv.entities.Category;
 import com.springboot.gv.entities.Product;
 
+
 @Repository
 @Transactional
+
+
 public interface ProductRepo extends JpaRepository<Product, Integer> {
 
 	public List<Product> findByCategory(Category category);
@@ -22,9 +25,8 @@ public interface ProductRepo extends JpaRepository<Product, Integer> {
 	
 	public List<Product> findByProductPriceGreaterThan(double price);
 	
-	
-	
 	@Modifying
 	@Query(value="update products set product_price =:price where product_id =:pid",nativeQuery = true)
 	public int updatePrice(double price,int pid);
+
 }

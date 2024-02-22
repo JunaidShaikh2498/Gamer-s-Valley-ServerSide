@@ -2,6 +2,9 @@ package com.springboot.gv.entities;
 
 import java.util.List;
 
+
+
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,6 +31,7 @@ import lombok.Setter;
 @Entity
 @Table(name="category")
 public class Category {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "category_id")
@@ -44,10 +48,10 @@ public class Category {
 	private List<Product>products;
 	
 	
-	public Category(String categoryName, String categoryDescription) {
+	public Category(String category_name, String category_description) {
 		super();
-		this.categoryName = categoryName;
-		this.categoryDescription = categoryDescription;
+		this.categoryName = category_name;
+		this.categoryDescription = category_description;
 		for(Product p : products) {
 			p.setCategory(this);
 		}

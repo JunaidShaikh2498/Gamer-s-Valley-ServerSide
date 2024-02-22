@@ -1,5 +1,7 @@
 package com.springboot.gv.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,11 +19,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-@Setter
 @Getter
+@Setter
 
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 
 @Entity
 @Table(name="products")

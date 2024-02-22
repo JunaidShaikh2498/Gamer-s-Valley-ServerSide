@@ -1,17 +1,23 @@
 package com.springboot.gv.entities;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 
 @NoArgsConstructor
 @AllArgsConstructor
+
+@ToString
+
 
 @Entity
 @Table(name="customers")
@@ -38,7 +44,7 @@ public class Customer {
     private String address;
 
     @OneToOne
-    @JoinColumn(name = "Registration_Id", referencedColumnName = "Registration_Id")
+    @JoinColumn(name = "registration_id")
     private RegisteredUser registered;
 
 	public Customer(String firstName, String lastName, String email, String contact, String address,

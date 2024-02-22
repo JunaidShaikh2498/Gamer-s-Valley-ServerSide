@@ -1,6 +1,11 @@
 package com.springboot.gv.repositories;
 
+
 import java.util.List;
+import com.springboot.gv.entities.Expert;
+
+
+
 
 import javax.transaction.Transactional;
 
@@ -12,11 +17,13 @@ import com.springboot.gv.entities.Expert;
 import com.springboot.gv.entities.RegisteredUser;
 
 
+
 @Transactional
 @Repository
 public interface ExpertRepo extends JpaRepository<Expert, Integer> {
 	
-	
+	@Query(value="select * from experts e,registered r where e.registration_id=r.registration_id ",nativeQuery = true)
+	public Expert getByRegId(int regId);
 	
 	
 	@Query( "select e from Expert e where e.registered =:regid")
@@ -28,5 +35,6 @@ public interface ExpertRepo extends JpaRepository<Expert, Integer> {
 	@Modifying
 	@Query(value ="update experts set firstname =:firstname,lastname =:lastname,email =:email,qualification =:qualification where registration_id =:registration_Id",nativeQuery = true)
 	public int updateExpert(String firstname,String lastname, String email, String qualification,int registration_Id);
+
 
 }

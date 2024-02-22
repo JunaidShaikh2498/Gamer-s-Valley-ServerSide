@@ -1,3 +1,4 @@
+
 package com.springboot.gv.services;
 
 import java.util.List;
@@ -29,15 +30,18 @@ public class CustomerService {
     	return c;
     }
     
-    public Customer getByRegId(int regId) {
-    	List<Customer> clist = cr.findAll();
+    
+    public Customer getCustomerByRegistrationId(int registrationId) {
+    	List<Customer> clist= cr.findAll();
     	Customer cust=null;
-    	for(Customer c : clist) {
-    		if(c.getRegistered().getRegistration_id()==regId) {
+    	for(Customer c :clist)
+    	{
+    		if(c.getRegistered().getRegistrationId()==registrationId)
+    		{
     			cust=c;
     		}
     	}
-    	return cust;
+        return cust;
     }
     
     public int updateCust(String firstname,String lastname, String email, String contact, String address, int regId) {

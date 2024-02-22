@@ -1,6 +1,9 @@
 package com.springboot.gv.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,17 +33,16 @@ public class CustomerController {
 	@Autowired
 	QuestionService qs;
 	
-	@GetMapping("/getCustByRegId/{rid}")
-	public Customer getByRegId(@PathVariable("rid") int rid) {
-		return cs.getByRegId(rid);
-	}
-	
+
 	@PutMapping("/updateC/{customerid}")
 	public boolean upCust(@PathVariable("customerid") int regId, @RequestBody UpdateCustomer uc) {
 		boolean flag = false;
 		Customer c = cs.findByCustId(regId);
-		int reg = c.getRegistered().getRegistration_id();
+		int reg = c.getRegistered().getRegistrationId();
 		rs.updateRuser(uc.getUsername(),reg);
+
+		rs.updateRuser(uc.getUsername(),reg);
+
 		 
 		int res = cs.updateCust(uc.getFirstname(), uc.getLastname(), uc.getEmail(), uc.getContact(),uc.getAddress(),reg);
 		if(res==1) {
@@ -49,6 +51,7 @@ public class CustomerController {
 		return flag;
 	}
 	
+
 	@PostMapping("/ask/{cid}")
 	public Question askAQuestion(@PathVariable("cid") int cid ,@RequestBody QuestionBody qb) {
 		Customer c = cs.findByCustId(cid);
@@ -56,4 +59,11 @@ public class CustomerController {
 		Question q = new Question(qb.getQue(),c);
 		return qs.askQues(q);
 	}	
+
+	@GetMapping("getCustByRegId/{registration_id}")
+    public Customer getCustomerByRegistrationId(@PathVariable int registration_id) {
+        Customer customerOptional = cs.getCustomerByRegistrationId(registration_id);
+
+        return customerOptional;
+    }
 }

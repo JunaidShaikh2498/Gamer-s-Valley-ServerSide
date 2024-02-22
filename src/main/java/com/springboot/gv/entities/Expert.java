@@ -1,6 +1,7 @@
 package com.springboot.gv.entities;
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -45,6 +46,7 @@ public class Expert {
     @JoinColumn(name = "registration_id")
     private RegisteredUser registered;
 
+
 	public Expert(String firstName, String lastName, String email, String qualification,
 			RegisteredUser registered) {
 		super();
@@ -54,8 +56,4 @@ public class Expert {
 		this.qualification = qualification;
 		this.registered = registered;
 	}
-
-	
-	
-	
 }

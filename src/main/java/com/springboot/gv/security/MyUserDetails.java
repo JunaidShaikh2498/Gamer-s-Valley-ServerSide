@@ -49,7 +49,7 @@ public class MyUserDetails implements UserDetails {
 			
 			System.out.println(authority);
 		   System.out.println(ruser);
-			return new MyUserDetails( ruser.getRegistration_id(),ruser.getUsername(), ruser.getPassword(), authority );
+			return new MyUserDetails( ruser.getRegistrationId(),ruser.getUsername(), ruser.getPassword(), authority );
 		  }
 
 	@Override

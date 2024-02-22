@@ -1,10 +1,13 @@
 package com.springboot.gv.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,8 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.springboot.gv.entities.Category;
 import com.springboot.gv.entities.Expert;
 import com.springboot.gv.entities.InsertCategory;
-import com.springboot.gv.entities.InsertProduct;
-import com.springboot.gv.entities.Product;
 import com.springboot.gv.entities.RegisteredUser;
 import com.springboot.gv.services.CategoryService;
 import com.springboot.gv.services.ExpertService;
@@ -28,6 +29,7 @@ import com.springboot.gv.services.RegisteredService;
 public class AdminController {
 	
 	@Autowired
+
 	JavaMailSender sender;
 	
 	@Autowired
@@ -39,7 +41,7 @@ public class AdminController {
 	@Autowired
 	RegisteredService rs;
 	
-	@GetMapping("/expertlist")
+	@GetMapping("/expert_list")
 	public List<Expert> getExpertList(){
 		return es.getAuthorizedExperts();
 	}
@@ -85,6 +87,8 @@ public class AdminController {
 		
 		return revoked;
 	}
+	
+	
 	
 	@PostMapping("/add-category")
 	public Category addCategory(@RequestBody InsertCategory ic) {

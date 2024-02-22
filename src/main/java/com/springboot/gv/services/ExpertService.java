@@ -2,9 +2,10 @@ package com.springboot.gv.services;
 
 
 import java.util.List;
+
+
+import java.util.List;
 import java.util.Optional;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,10 @@ public class ExpertService {
 	
 	public Expert saveExpert(Expert e) {
 		return er.save(e);
+	}
+
+	public List<Expert> getAll(){
+		return er.findAll();
 	}
 	
 
@@ -46,9 +51,17 @@ public class ExpertService {
 	public int updateExp(String firstname,String lastname, String email, String qualification,int regId) {
 		
 		return er.updateExpert(firstname,lastname,email,qualification,regId);
-
 	}
+
 	public Expert getExpertByRid(RegisteredUser ru) {
 		return er.getByRegId(ru);
 	}
+
+
+	public Expert findByRegId(int regId)
+	{
+		return er.getByRegId(regId);
+	}
+	
+
 }
