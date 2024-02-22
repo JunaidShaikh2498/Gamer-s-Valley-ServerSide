@@ -32,7 +32,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "orders")
+@Table(name = "orders") 
 public class Order {
 	
 	    @Id

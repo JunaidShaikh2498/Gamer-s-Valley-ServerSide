@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class PlaceOrderPOJO {
+public class PlaceOrderPOJO { 
 	private int customer_id;
 	private Address address;
 	private double totalPrice;
