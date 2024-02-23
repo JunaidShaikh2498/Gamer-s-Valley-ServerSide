@@ -32,4 +32,13 @@ public class FAQ {
 	@ManyToOne
 	@JoinColumn(name="category_id")
 	private Category category;
+
+	public FAQ(String question, String answer, Category category) {
+		super();
+		this.question = question;
+		this.answer = answer;
+		this.category = category;
+	}
+	
+	
 }

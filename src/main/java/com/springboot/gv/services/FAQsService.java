@@ -19,5 +19,9 @@ public class FAQsService {
 		
 		return fr.findByCategory(cat);
 	}
+	
+	public FAQ addQuestion(FAQ faq) {
+		return fr.save(faq);
+	}
 
 }

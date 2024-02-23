@@ -96,10 +96,11 @@ public class AppSecurityConfigurer {
 			authorize.requestMatchers(new AntPathRequestMatcher("/login")).permitAll();
 			authorize.requestMatchers(new AntPathRequestMatcher("/saveExp")).permitAll();
 			authorize.requestMatchers(new AntPathRequestMatcher("/save")).permitAll();
+//			authorize.requestMatchers(new AntPathRequestMatcher("/getquestions")).permitAll();
 			authorize.antMatchers("/admin").hasAuthority("Admin");
 //			authorize.antMatchers("/home").hasAuthority("Admin");
-//			authorize.antMatchers("/home").hasAuthority("Customer");
-//			authorize.antMatchers("/home").hasAuthority("Expert");
+			authorize.antMatchers("/getquestions").hasAnyAuthority("Customer","Expert","Admin");
+			authorize.antMatchers("/getanswer/*").hasAnyAuthority("Customer","Expert","Admin");
 			authorize.antMatchers("/expert_list").hasAuthority("Admin");
 			authorize.antMatchers("/add-category").hasAuthority("Admin");
 			authorize.antMatchers("/addProduct/*").hasAuthority("Admin");
@@ -111,6 +112,8 @@ public class AppSecurityConfigurer {
 			authorize.antMatchers("/answer/**").hasAuthority("Expert");
 			authorize.antMatchers("/ask/*").hasAuthority("Customer");
 			authorize.antMatchers("/placeOrder").hasAuthority("Customer");
+			authorize.antMatchers("/faq_list/*").hasAuthority("Customer");
+			authorize.antMatchers("/faq_list/*").hasAuthority("Expert");
 			//authorize.antMatchers("/cats").permitAll();
 //			authorize.requestMatchers(new AntPathRequestMatcher("")).hasAuthority("Admin");
 //			authorize.requestMatchers(new AntPathRequestMatcher("/")).permitAll();

@@ -35,4 +35,8 @@ public class QuestionService {
 		}
 		return q;
 	}
+	
+	public List<Question> getAllQuestions(){
+		return qr.findAll();
+	}
 }

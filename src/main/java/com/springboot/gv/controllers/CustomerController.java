@@ -33,6 +33,11 @@ public class CustomerController {
 	@Autowired
 	QuestionService qs;
 	
+	
+	@GetMapping("/getcust/{cid}")
+	public Customer getByCustId(@PathVariable("cid") int cid) {
+		return cs.findByCustId(cid);
+	}
 
 	@PutMapping("/updateC/{customerid}")
 	public boolean upCust(@PathVariable("customerid") int regId, @RequestBody UpdateCustomer uc) {
