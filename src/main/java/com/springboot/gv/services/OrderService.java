@@ -1,5 +1,7 @@
 package com.springboot.gv.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,7 @@ public class OrderService  {
 	public Order placeOrder(Order o) {
 		return or.save(o);
 	}
-	
+	public List<Order> getOrders(){
+		return or.findAll();
+	}
 }

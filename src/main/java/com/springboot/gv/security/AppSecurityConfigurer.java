@@ -112,8 +112,8 @@ public class AppSecurityConfigurer {
 			authorize.antMatchers("/answer/**").hasAuthority("Expert");
 			authorize.antMatchers("/ask/*").hasAuthority("Customer");
 			authorize.antMatchers("/placeOrder").hasAuthority("Customer");
-			authorize.antMatchers("/faq_list/*").hasAuthority("Customer");
-			authorize.antMatchers("/faq_list/*").hasAuthority("Expert");
+			authorize.antMatchers("/faq_list/*").hasAnyAuthority("Customer","Expert");
+			authorize.antMatchers("/orderlist").hasAuthority("Admin");
 			//authorize.antMatchers("/cats").permitAll();
 //			authorize.requestMatchers(new AntPathRequestMatcher("")).hasAuthority("Admin");
 //			authorize.requestMatchers(new AntPathRequestMatcher("/")).permitAll();

@@ -95,6 +95,11 @@ public class OrderController {
         sender.send(mailMsg);
 		return o;
 	}
+	@GetMapping("/orderlist")
+	public List<Order> getOrderList(){
+		return os.getOrders();
+				
+	}
 	
 //	@GetMapping("/changeOrderStatus")
 //	public boolean changeOrderStatus(@RequestParam int oid) {
