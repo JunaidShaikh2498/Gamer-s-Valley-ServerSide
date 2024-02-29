@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.gv.entities.Customer;
+import com.springboot.gv.entities.Feedback;
+import com.springboot.gv.entities.FeedbackBody;
 import com.springboot.gv.entities.Question;
 import com.springboot.gv.entities.QuestionBody;
 import com.springboot.gv.entities.UpdateCustomer;
@@ -71,4 +73,12 @@ public class CustomerController {
 
         return customerOptional;
     }
+	
+	@PostMapping("/givefeedback/{cid}")
+	public Feedback submitFeedback(@RequestBody FeedbackBody fb, @PathVariable("cid") int cid) {
+		Customer c = cs.findByCustId(cid);
+		
+		Feedback feed = new Feedback(fb.getSuggestion(), c);
+		return feed;
+	}
 }

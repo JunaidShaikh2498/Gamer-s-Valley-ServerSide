@@ -56,6 +56,7 @@ public class AdminController {
 				Expert e = es.getExpertByRid(ru);
 				SimpleMailMessage mailMsg = new SimpleMailMessage();
 				mailMsg.setFrom("hrishi3bhogade@gmail.com");
+				mailMsg.setTo(e.getEmail());
 				mailMsg.setSubject("Admin's Approval Granted");
 		        mailMsg.setText("Congratulations "+e.getFirstname()+". You have given access as an Expert. You can now login and enjoy your Expert's experience. Thank you!!!");
 		        sender.send(mailMsg);
@@ -77,6 +78,7 @@ public class AdminController {
 				Expert e = es.getExpertByRid(ru);
 				SimpleMailMessage mailMsg = new SimpleMailMessage();
 				mailMsg.setFrom("hrishi3bhogade@gmail.com");
+				mailMsg.setTo(e.getEmail());
 				mailMsg.setSubject("Admin's Approval Revoked");
 		        mailMsg.setText("Dear "+e.getFirstname()+", We regret to inform you that certain permissions on our website have been revoked. For details, contact us.");
 		        sender.send(mailMsg);

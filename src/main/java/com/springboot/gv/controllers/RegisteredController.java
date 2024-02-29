@@ -53,7 +53,7 @@ public class RegisteredController {
     	Role role = rls.getById(iu.getRoleId());
     	RegisteredUser rr = new RegisteredUser(role,iu.getUsername(),pe.encode(iu.getPassword()),iu.getApproved());
     	RegisteredUser r= rs.saveRegistered(rr);
-        
+        try {
         Customer c = new Customer(iu.getFirstname(),iu.getLastname(),iu.getEmail(),iu.getContact(),iu.getAddress(),r);
         cs.saveCustomer(c);
         SimpleMailMessage mailMsg = new SimpleMailMessage();
@@ -65,6 +65,9 @@ public class RegisteredController {
         if(rr!=null && c!=null) {
         	flag = true;
         }
+        }catch(Exception e) {
+        	e.printStackTrace();
+        }        
         return flag;
     }
     @PostMapping("/saveExp")
@@ -73,7 +76,7 @@ public class RegisteredController {
     	Role role =	rls.getById(ie.getRoleId());
     	RegisteredUser rr = new RegisteredUser(role,ie.getUsername(),pe.encode(ie.getPassword()),ie.getApproved());
     	RegisteredUser r= rs.saveRegistered(rr);
-        
+        try {
         Expert e = new Expert(ie.getFirstname(),ie.getLastname(),ie.getEmail(),ie.getQualification(),r);
         es.saveExpert(e);
         SimpleMailMessage mailMsg = new SimpleMailMessage();
@@ -84,6 +87,9 @@ public class RegisteredController {
         sender.send(mailMsg);
         if(rr!=null && e!=null) {
         	flag = true;
+        }
+        }catch(Exception e) {
+        	e.printStackTrace();
         }
         return flag;
     }

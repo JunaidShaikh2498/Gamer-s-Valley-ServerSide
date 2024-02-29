@@ -107,6 +107,7 @@ public class AppSecurityConfigurer {
 			authorize.antMatchers("/*/updatePrice").hasAuthority("Admin");
 			authorize.antMatchers("/editProfileE").hasAuthority("Expert");
 			authorize.antMatchers("/getCustByRegId/*").hasAuthority("Customer");
+			authorize.antMatchers("/givefeedback/*").hasAuthority("Customer");
 			authorize.antMatchers("/updateC/*").hasAuthority("Customer");
 			authorize.antMatchers("/deleteCartItem/*").hasAuthority("Customer");
 			authorize.antMatchers("/answer/**").hasAuthority("Expert");
